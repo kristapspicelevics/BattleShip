@@ -19,24 +19,23 @@ export default function App() {
   populateMap(m)
   generateMap(m)
 
-  for(i = 0; i < 100; i++){
-    print[j] = m[i]
-    j++
-    print[j] = ' '
-    if(i % 10 == 9){
-      j++
-      print[j] = '\n'
-    }
-    j++
+  printMap(m, print)
+
+
+  function clicked() {
+    window.location.reload(false);
   }
+  
 
   return (
     <View>
-      <ul>
-        {print.map(item => {
-          return <Text>{item}</Text>;
-        })}
-      </ul>       
+      <Text>{print}</Text> 
+        <TouchableOpacity onPress={()=> clicked()}> 
+        
+        <Text style={styles.paragraph}>
+          Randomize
+        </Text>
+      </TouchableOpacity>       
     </View>
   )
 }
@@ -156,6 +155,19 @@ function updateMapVertical(shipLength, shipStartPos, map) {
 function populateMap(map){
   for(var i = 0; i < 100; i++){
       map[i] = 0
+  }
+}
+
+function printMap(m, print){
+  for(i = 0; i < 100; i++){
+    print[j] = m[i]
+    j++
+    print[j] = ' '
+      if(i % 10 == 9){
+      j++
+      print[j] = '\n'
+    }
+    j++
   }
 }
 
