@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, NativeModules, FlatList } from 'react-native';
 import Constants from 'expo-constants';
-
 // You can import from local files
 import AssetExample from './components/AssetExample';
 
@@ -10,23 +9,22 @@ import { Card } from 'react-native-paper';
 
 var m = [100];
 var allShips = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
+var print = []
+var i = 0
+var j = 0
+
+
+populateMap(m)
+generateMap(m)
+printMap(m, print)
+
+
+function clicked() {
+  window.location.reload(false);
+}
 
 export default function App() {
   
-  var print = []
-  var i = 0
-  var j = 0
-  populateMap(m)
-  generateMap(m)
-
-  printMap(m, print)
-
-
-  function clicked() {
-    window.location.reload(false);
-  }
-  
-
   return (
     <View>
       <Text>{print}</Text> 
@@ -35,7 +33,7 @@ export default function App() {
         <Text style={styles.paragraph}>
           Randomize
         </Text>
-      </TouchableOpacity>       
+      </TouchableOpacity>  
     </View>
   )
 }
@@ -154,7 +152,7 @@ function updateMapVertical(shipLength, shipStartPos, map) {
 
 function populateMap(map){
   for(var i = 0; i < 100; i++){
-      map[i] = 0
+    m[i] = 0
   }
 }
 
